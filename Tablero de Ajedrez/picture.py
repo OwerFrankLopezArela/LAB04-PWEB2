@@ -105,3 +105,37 @@ class Picture:
       x += 1
 
     return Picture(newimg)
+
+  #Extra: Sólo para realmente viciosos 
+  def rotate(self):
+    """Devuelve una figura rotada en 90 grados, puede ser en sentido horario
+    o antihorario"""
+    newimg = []
+    i = 0
+    while (i < len(self.img[0])):
+      row = ""
+      j = len(self.img) - 1
+      while (j >= 0):
+        aux = self.img[j]
+        row += aux[i]
+        j -= 1
+      newimg.append(row)
+      i += 1
+      
+    return Picture(newimg)
+  
+  def setBackground(self, p):
+    backgroundColor = p.img[0][0]
+    newimg = []
+    for r in self.img:
+      x = 0
+      row = ""
+      while x < len(r): 
+        if r[x] == " ":
+          row += backgroundColor
+        else:
+          row += r[x]
+        x += 1
+      newimg.append(row)
+
+    return Picture(newimg)
